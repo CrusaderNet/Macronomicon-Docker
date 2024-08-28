@@ -1,0 +1,22 @@
+<title>Macronomicon</title>
+
+<div class="page-contents">
+  <div class="header">
+    <h1>Macronomicon</h1>
+    <p>The Book of Macros</p>
+  </div>
+  
+  <section class="journal">
+    <h2>My Macro Journal</h2>
+  
+    @for (entry of macroEntries; track entry.id) {
+      <div class="macro-entry">
+        <div><span class="macro">Proteins:</span> {{entry.proteins}}g</div>
+        <div><span class="macro">Carbs:</span> {{entry.carbs}}g</div> 
+        <div><span class="macro">Fats:</span> {{entry.fats}}g</div>
+        <div><span class="macro">Total Calories:</span> {{entry.calories.toFixed(2)}} cal</div>
+        <div class="date">Submitted {{entry.submitTime.toLocaleString()}}</div>
+      </div>
+    }
+  </section>
+</div>
