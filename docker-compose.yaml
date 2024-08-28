@@ -32,4 +32,4 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: CompSQLD2024!
     volumes:
-      - ./db:/docker-entrypoint-initdb.d
+      - ./db:/var/lib/mysql
