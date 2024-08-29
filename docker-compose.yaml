@@ -1,15 +1,24 @@
 services:
 
-  angular:
-    build: ./app
+  db:
+    image: mysql:5.7
     ports:
-      - "4200:4200"
+      - "3306:3306"
     networks:
       - appnet
-    depends_on:
-      - api
+    environment:
+      MYSQL_DATABASE: macronomicon
+      MYSQL_USER: root
+      MYSQL_PASSWORD: CompSQLD2024!
+      MYSQL_ROOT_PASSWORD: CompSQLD2024!
+      MY_SQL_ROOT_HOST: '%'
+    volumes:
+      - database_data:/var/lib/mysql
+      - ./api/init.sql:/tmp/init.sql
+    command: --init-file /tmp/init.sql
   
   api:
+    restart: always
     build: ./api
     ports:
       - "8080:8080"
@@ -24,21 +33,14 @@ services:
       DB_HOST: db
       DB_PORT: 3306
     
-  db:
-    image: mysql:5.7
+  angular:
+    build: ./app
     ports:
-      - "3306:3306"
+      - "4200:4200"
     networks:
       - appnet
-    environment:
-      MYSQL_DATABASE: macronomicon
-      MYSQL_USER: root
-      MYSQL_PASSWORD: CompSQLD2024!
-      MYSQL_ROOT_PASSWORD: CompSQLD2024!
-    volumes:
-      - database_data:/var/lib/mysql
-      - ./api/init.sql:/tmp/init.sql
-    command: --init-file /tmp/init.sql
+    depends_on:
+      - api
 
 networks:
   appnet:
