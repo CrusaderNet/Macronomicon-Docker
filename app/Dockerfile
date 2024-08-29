@@ -3,8 +3,6 @@ FROM node:latest as node
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build --prod
-
-#stage 2
-FROM nginx:alpine
-COPY --from=node /app/dist/macronomicon /usr/share/nginx/html
+RUN npm install -g @angular/cli@7.3.9
+EXPOSE 4200
+ENTRYPOINT [ "ng", "serve", "--host", "0.0.0.0"]
