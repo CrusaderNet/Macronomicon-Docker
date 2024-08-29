@@ -17,6 +17,12 @@ services:
       - appnet
     depends_on:
       - db
+    environment:
+      DB_USERNAME: root
+      DB_PASSWORD: CompSQLD2024!
+      DB_NAME: macronomicon
+      DB_HOST: db
+      DB_PORT: 3306
     
   db:
     image: mysql:5.7
