@@ -1,9 +1,5 @@
-
--- Create a new database
--- CREATE DATABASE macronomicon;
-
 --mysql macronomicon --password
-
+USE macronomicon;
 
 -- Create User Table
 CREATE TABLE users(

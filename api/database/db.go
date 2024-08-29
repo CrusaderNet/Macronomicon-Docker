@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 
+	"os"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -10,7 +11,7 @@ import (
 const DB_USERNAME = "root"
 const DB_PASSWORD = "CompSQLD2024!"
 const DB_NAME = "macronomicon"
-const DB_HOST = "localhost"
+const DB_HOST = "db"
 const DB_PORT = "3306"
 
 var DB *gorm.DB
@@ -22,6 +23,7 @@ func Init() error {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return fmt.Errorf("error connecting to database. error = %w", err)
+		os.Exit(1)
 	}
 
 	DB = db

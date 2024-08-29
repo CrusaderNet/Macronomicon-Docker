@@ -1,14 +1,9 @@
-version: '3'
-
 services:
 
   angular:
     build: ./app
     ports:
-      - "4200:4200"
-    volumes:
-      - .:/app
-    command: npm start
+      - "4200:8080"
     depends_on:
       - api
   
@@ -16,9 +11,6 @@ services:
     build: ./api
     ports:
       - "8080:8080"
-    volumes:
-      - .:/api
-    command: npm start
     depends_on:
       - db
     
@@ -27,9 +19,14 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: CompSQLD2024!
       MYSQL_DATABASE: macronomicon
       MYSQL_USER: root
       MYSQL_PASSWORD: CompSQLD2024!
+      MYSQL_ROOT_PASSWORD: CompSQLD2024!
     volumes:
-      - ./db:/var/lib/mysql
+      - database_data:/var/lib/mysql
+      - ./api/init.sql:/tmp/init.sql
+    command: --init-file /tmp/init.sql
+
+volumes:
+  database_data:
