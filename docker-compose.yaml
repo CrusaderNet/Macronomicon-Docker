@@ -7,16 +7,16 @@ services:
     networks:
       - appnet
     environment:
-      MYSQL_DATABASE: macronomicon
-      MYSQL_USER: user #IT WOULD NOT ALLOW ROOT
-      MYSQL_PASSWORD: CompSQLD2024!
-      MYSQL_ROOT_PASSWORD: CompSQLD2024!
-      MY_SQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: 'macronomicon'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
     volumes:
       - database_data:/var/lib/mysql
-      - ./api/init.sql:/tmp/init.sql
-    command: --init-file /tmp/init.sql
-  
+      - ./api/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./api/my.cnf:/etc/mysql/conf.d/my.cnf
+    command: --init-file=/docker-entrypoint-initdb.d/init.sql
+
   api:
     restart: always
     build: ./api
@@ -27,10 +27,10 @@ services:
     depends_on:
       - db
     environment:
-      DB_USERNAME: root
-      DB_PASSWORD: CompSQLD2024!
-      DB_NAME: macronomicon
-      DB_HOST: db
+      DB_USERNAME: 'user'
+      DB_PASSWORD: 'password'
+      DB_NAME: 'macronomicon'
+      DB_HOST: 'db'
       DB_PORT: 3306
     
   angular:

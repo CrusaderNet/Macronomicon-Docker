@@ -1,5 +1,11 @@
 --mysql macronomicon --password
+CREATE DATABASE macronomicon;
+
 USE macronomicon;
+
+CREATE USER 'user'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'%';
+FLUSH PRIVILEGES;
 
 -- Create User Table
 CREATE TABLE users(

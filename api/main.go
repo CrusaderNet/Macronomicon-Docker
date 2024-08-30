@@ -28,9 +28,15 @@ func main() {
 		panic(err)
 	}
 
+	println("START FETCHES")
 	router.GET("/", index)
+	println("END FETCH 1")
 	router.GET("/macro_entries", controller.ListMacroEntries)
+	println("END FETCH 2")
 	router.GET("/users", controller.ListUsers)
+	println("END FETCH 3")
 
+	println("START SERVER")
 	router.Run("localhost:8080")
+	println("SERVING")
 }

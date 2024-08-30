@@ -24,8 +24,15 @@ func Init() error {
 	DB_HOST := os.Getenv("DB_HOST")
 	DB_PORT := os.Getenv("DB_PORT")
 
+	println("DB_USERNAME:", DB_USERNAME)
+	println("DB_PASSWORD:", DB_PASSWORD)
+	println("DB_NAME:", DB_NAME)
+	println("DB_HOST:", DB_HOST)
+	println("DB_PORT:", DB_PORT)
+
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&loc=Local", DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME)
-	fmt.Println("dsn:", dsn)
+	println("dsn:", dsn)
+	//fmt.Println("dsn:", dsn)
 
 	println("Connecting to database. . . . . .")
 
