@@ -7,10 +7,10 @@ export class ApiService {
     constructor() {}
 
     listMacroEntries(userID: number): Promise<MacroEntry[]> {
-        return fetch(`http://api:8080/macro_entries?userID=${userID}`).then(response => response.json() as Promise<MacroEntry[]>);
+        return fetch(`http://localhost:8080/macro_entries?userID=${userID}`).then(response => response.json() as Promise<MacroEntry[]>);
     }
 
     listUsers(): Promise<User[]> {
-        return fetch('http://api:8080/users').then(response => response.json() as Promise<User[]>);
+        return fetch('http://localhost:8080/users').then(response => response.json() as Promise<User[]>);
     }
 }
