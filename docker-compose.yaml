@@ -37,6 +37,8 @@ services:
     build: ./app
     ports:
       - "4200:4200"
+    links:
+      - api
     networks:
       - appnet
     depends_on:
