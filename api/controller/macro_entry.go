@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"fmt"
-	"time"
 
 	"macronomicon/api/database"
 	"macronomicon/api/model"
@@ -15,7 +14,7 @@ import (
 func ListMacroEntries(c *gin.Context) {
 	println("ListMacroEntries CALL")
 	var macroEntries []*model.MacroEntry
-	if err := database.DB.Find(&macroEntries).Error; err != nil {
+	if err := database.DB.Order("submit_time desc").Find(&macroEntries).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		println(err)
 		return
@@ -27,15 +26,21 @@ func ListMacroEntries(c *gin.Context) {
 func InsertMacroEntry(c *gin.Context) {
 	println("Insert Macro Entry")
 
-	var entry model.MacroEntry
-	if err := c.BindJSON(&entry); err != nil {
+	var req model.InsertMacroEntryRequest
+	if err := c.BindJSON(&req); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		println(err)
 		return
 	}
-	fmt.Printf("%+v", entry)
 
-	entry.SubmitTime = time.Now()
+	entry := model.MacroEntry{
+		UserID:   req.UserID,
+		Proteins: req.Proteins,
+		Carbs:    req.Carbs,
+		Fats:     req.Fats,
+	}
+
+	fmt.Printf("%+v", entry)
 
 	if err := database.DB.Create(&entry).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})

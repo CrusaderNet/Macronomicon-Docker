@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { InsertMacroEntryRequest } from "../models/macro_entry";
 import { MacroEntry } from "../models/macro_entry";
 import { User } from "../models/user";
 
@@ -12,5 +13,9 @@ export class ApiService {
 
     listUsers(): Promise<User[]> {
         return fetch('http://localhost:8080/users').then(response => response.json() as Promise<User[]>);
+    }
+
+    insertMacroEntry(entry: InsertMacroEntryRequest) {
+        return fetch('http://localhost:8080/macro_entry', {method: 'POST', body: JSON.stringify(entry)});
     }
 }
