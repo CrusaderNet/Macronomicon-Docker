@@ -16,7 +16,7 @@ CREATE TABLE users(
 
 -- Create Macro Entries Table
 CREATE TABLE macro_entries(
-    id INT,
+    id INT NOT NULL AUTO_INCREMENT,
     user_id INT,
     submit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
     proteins FLOAT NOT NULL,
@@ -30,11 +30,11 @@ CREATE TABLE macro_entries(
 INSERT INTO users (id, email) VALUES (1, 'stourish@comcast.net');
 INSERT INTO users (id, email) VALUES (2, 'Nyko@gmail.com');
 
-INSERT INTO macro_entries (id, user_id, submit_time, proteins, carbs, fats) 
-VALUES (1, 1, CURRENT_TIMESTAMP(), 10.6, 3.5, 7.8);
+INSERT INTO macro_entries (user_id, submit_time, proteins, carbs, fats) 
+VALUES (1, CURRENT_TIMESTAMP(), 10.6, 3.5, 7.8);
 
-INSERT INTO macro_entries (id, user_id, submit_time, proteins, carbs, fats) 
-VALUES (2, 2, CURRENT_TIMESTAMP(), 25.6, 7.5, 6.8);
+INSERT INTO macro_entries (user_id, submit_time, proteins, carbs, fats) 
+VALUES (2, CURRENT_TIMESTAMP(), 25.6, 7.5, 6.8);
 
-INSERT INTO macro_entries (id, user_id, submit_time, proteins, carbs, fats) 
-VALUES (3, 2, CURRENT_TIMESTAMP(), 35.6, 4.5, 9.8);
+INSERT INTO macro_entries (user_id, submit_time, proteins, carbs, fats) 
+VALUES (2, CURRENT_TIMESTAMP(), 35.6, 4.5, 9.8);

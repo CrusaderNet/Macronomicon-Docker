@@ -36,6 +36,8 @@ func main() {
 	router.GET("/users", controller.ListUsers)
 	println("END FETCH 3")
 
+	router.POST("/macro_entry", controller.InsertMacroEntry)
+
 	println("START SERVER")
 	router.Run("0.0.0.0:8080")
 	println("SERVING")
