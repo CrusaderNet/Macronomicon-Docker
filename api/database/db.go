@@ -9,12 +9,6 @@ import (
 	"gorm.io/gorm"
 )
 
-//const DB_USERNAME = "root"
-//const DB_PASSWORD = "CompSQLD2024!"
-//const DB_NAME = "macronomicon"
-//const DB_HOST = "db"
-//const DB_PORT = "3306"
-
 var DB *gorm.DB
 
 func Init() error {
