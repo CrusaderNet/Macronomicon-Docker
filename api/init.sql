@@ -3,9 +3,11 @@ CREATE DATABASE macronomicon;
 
 USE macronomicon;
 
+-- Remove/rewrite permissions later for more secure connection
 CREATE USER 'user'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'user'@'%';
 FLUSH PRIVILEGES;
+-- Remove This Section 
 
 -- Create User Table
 CREATE TABLE users(
@@ -27,8 +29,8 @@ CREATE TABLE macro_entries(
 );
 
 --Fake Data test
-INSERT INTO users (id, email) VALUES (1, 'stourish@comcast.net');
-INSERT INTO users (id, email) VALUES (2, 'Nyko@gmail.com');
+INSERT INTO users (id, email) VALUES (1, 'testUser1@gmail.com');
+INSERT INTO users (id, email) VALUES (2, 'testUser2@gmail.com');
 
 INSERT INTO macro_entries (user_id, submit_time, proteins, carbs, fats) 
 VALUES (1, CURRENT_TIMESTAMP(), 10.6, 3.5, 7.8);
