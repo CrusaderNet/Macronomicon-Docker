@@ -1,4 +1,4 @@
-module macronomicon/api
+module macronomicon/backend
 
 go 1.22.4
 

@@ -5,8 +5,8 @@ import (
 
 	"fmt"
 
-	"macronomicon/api/database"
-	"macronomicon/api/model"
+	"macronomicon/backend/database"
+	"macronomicon/backend/model"
 
 	"github.com/gin-gonic/gin"
 )

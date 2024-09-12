@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"macronomicon/api/controller"
-	"macronomicon/api/database"
+	"macronomicon/backend/controller"
+	"macronomicon/backend/database"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
