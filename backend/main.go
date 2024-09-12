@@ -28,17 +28,11 @@ func main() {
 		panic(err)
 	}
 
-	println("START FETCHES")
 	router.GET("/", index)
-	println("END FETCH 1")
 	router.GET("/macro_entries", controller.ListMacroEntries)
-	println("END FETCH 2")
 	router.GET("/users", controller.ListUsers)
-	println("END FETCH 3")
 
 	router.POST("/macro_entry", controller.InsertMacroEntry)
 
-	println("START SERVER")
 	router.Run("0.0.0.0:8080")
-	println("SERVING")
 }
