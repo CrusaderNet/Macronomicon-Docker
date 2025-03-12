@@ -1,8 +1,9 @@
 #stage 1
-FROM node:latest as node
+FROM node:22 AS node
 WORKDIR /app
+RUN npm install -g @angular/cli@18
+COPY package.json package-lock.json ./
+RUN npm i
 COPY . .
-RUN npm install
-RUN npm install -g @angular/cli@7.3.9
 EXPOSE 4200
-ENTRYPOINT [ "ng", "serve", "--host", "0.0.0.0"]
+ENTRYPOINT [ "ng", "serve", "--host", "0.0.0.0", "--poll", "2000"]

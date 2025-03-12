@@ -36,6 +36,8 @@ services:
       - "4200:4200"
     depends_on:
       - api
-
+    volumes: 
+      - ./app:/app
+      - /app/node_modules
 volumes:
   database_data:
